@@ -1,0 +1,39 @@
+services:
+
+  backend:
+    build:
+      context: ./backend
+    container_name: chatapp-backend
+
+    restart: on-failure
+
+    ports:
+      - "8080:8080"
+
+    depends_on:
+      - mysql
+
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/chatapp
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: rootpassword
+
+  mysql:
+    image: mysql:8.4
+    container_name: chatapp-mysql
+
+    restart: always
+
+    environment:
+      MYSQL_DATABASE: chatapp
+      MYSQL_ROOT_PASSWORD: rootpassword
+
+    ports:
+      - "3307:3306"
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+
+volumes:
+  mysql_data:

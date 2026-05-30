@@ -1,8 +1,7 @@
-target/
+backend/target/
 *.class
 *.jar
 .vscode/
 node_modules/
 .env
-.DS_Store
 Thumbs.db
