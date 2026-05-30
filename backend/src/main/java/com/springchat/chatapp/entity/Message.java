@@ -13,6 +13,8 @@ import lombok.Getter;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.Size;
+
 
 import java.time.LocalDateTime;
 
@@ -35,12 +37,13 @@ public class Message {
     private User sender;
 
     @ManyToOne
-    @JoinColumn(name = "receiver_id", nullable = false)
-    private User receiver;
+    @JoinColumn(name = "chat_id", nullable = false)
+    private Chat chat;
 
 
     @Column(length = 1000, nullable = false)
     @NotBlank
+    @Size(max = 1000)
     private String content; 
 
     @CreationTimestamp

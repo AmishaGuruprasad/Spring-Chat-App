@@ -15,6 +15,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -29,16 +30,19 @@ public class User{
     @Id
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false, length = 255)
     @NotBlank
+    @Size(max = 255)
     private String email;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false, length = 100)
     @NotBlank
+    @Size(max = 100)
     private String username;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     @NotBlank
+    @Size(max = 50)
     private String name;
 
     @CreationTimestamp
