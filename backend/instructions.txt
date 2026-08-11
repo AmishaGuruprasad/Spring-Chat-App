@@ -1,0 +1,5 @@
+to run only mysql
+docker compose up -d mysql
+
+to run java backend
+mvnw.cmd spring-boot:run
